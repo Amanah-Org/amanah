@@ -43,10 +43,6 @@ export default defineNuxtConfig({
     { path: "~/components/shared", pathPrefix: false },
   ],
 
-  routeRules: {
-    "/**": { ssr: false },
-  },
-
   supabase: {
     redirectOptions: {
       login: "/login",
