@@ -1,0 +1,305 @@
+{
+  "nav": {
+    "dashboard": "Dashboard",
+    "beneficiaries": "Beneficiaries",
+    "donations": "Donations",
+    "settings": "Settings",
+    "signOut": "Sign out"
+  },
+  "app": {
+    "tagline": "Aid Management"
+  },
+  "auth": {
+    "login": {
+      "title": "Welcome back",
+      "subtitle": "Sign in to your Amanah account",
+      "email": "Email address",
+      "password": "Password",
+      "forgotPassword": "Forgot password?",
+      "submit": "Sign in",
+      "submitting": "Signing in…",
+      "noAccount": "Don't have an account?",
+      "signUp": "Sign up"
+    },
+    "signup": {
+      "title": "Create your account",
+      "subtitle": "Start managing aid with Amanah",
+      "fullName": "Full name",
+      "fullNamePlaceholder": "Your full name",
+      "email": "Email address",
+      "password": "Password",
+      "passwordHint": "Min 8 characters",
+      "submit": "Create account",
+      "submitting": "Creating account…",
+      "hasAccount": "Already have an account?",
+      "signIn": "Sign in"
+    },
+    "forgotPassword": {
+      "title": "Reset your password",
+      "subtitle": "We will email you a reset link.",
+      "email": "Email address",
+      "submit": "Send reset link",
+      "submitting": "Sending...",
+      "backToLogin": "Back to sign in",
+      "success": "Password reset email sent. Check your inbox."
+    },
+    "resetPassword": {
+      "title": "Set a new password",
+      "subtitle": "Choose a secure password for your account.",
+      "newPassword": "New password",
+      "confirmPassword": "Confirm password",
+      "submit": "Update password",
+      "submitting": "Updating...",
+      "mismatch": "Passwords do not match.",
+      "success": "Password updated. Redirecting to sign in..."
+    }
+  },
+  "onboarding": {
+    "title": "Set up your organization",
+    "subtitle": "This only takes a minute",
+    "orgName": "Organization name",
+    "orgNamePlaceholder": "e.g. Al-Rahma Charity",
+    "slug": "URL slug",
+    "slugPrefix": "amanah.app/",
+    "slugHint": "Lowercase letters, numbers, and hyphens only",
+    "submit": "Create organization",
+    "submitting": "Creating…",
+    "slugTaken": "This slug is already taken. Please choose another."
+  },
+  "dashboard": {
+    "title": "Dashboard",
+    "subtitle": "Overview of your organization's aid operations",
+    "metrics": {
+      "totalBeneficiaries": "Total Beneficiaries",
+      "activeCases": "Active Cases",
+      "totalDonations": "Total Donations",
+      "balanceRemaining": "Balance Remaining",
+      "urgent": "{n} urgent",
+      "thisMonth": "{n} this month"
+    },
+    "upcomingNeeds": {
+      "title": "Upcoming Recurring Needs",
+      "viewAll": "View all →",
+      "empty": "No active recurring needs"
+    },
+    "recentDistributions": {
+      "title": "Recent Distributions",
+      "viewAll": "View all →",
+      "empty": "No distributions recorded yet"
+    }
+  },
+  "beneficiaries": {
+    "title": "Beneficiaries",
+    "subtitle": "Manage and track all beneficiaries",
+    "addButton": "+ Add Beneficiary",
+    "searchPlaceholder": "Search by name, phone or national ID…",
+    "statusFilter": {
+      "all": "All statuses",
+      "active": "Active",
+      "inactive": "Inactive",
+      "archived": "Archived"
+    },
+    "table": {
+      "name": "Name",
+      "city": "City",
+      "familySize": "Family Size",
+      "activeNeeds": "Active Needs",
+      "status": "Status"
+    },
+    "loading": "Loading…",
+    "empty": "No beneficiaries found",
+    "view": "View →",
+    "familyOf": "Family of",
+    "notFound": "Beneficiary not found.",
+    "back": "← Back",
+    "backToBeneficiaries": "← Beneficiaries",
+    "addDistribution": "+ Add Distribution",
+    "tabs": {
+      "info": "Personal Info",
+      "needs": "Active Needs",
+      "history": "Distribution History",
+      "attachments": "Attachments",
+      "notes": "Notes"
+    },
+    "info": {
+      "fullName": "Full Name",
+      "phone": "Phone",
+      "nationalId": "National ID",
+      "gender": "Gender",
+      "birthDate": "Date of Birth",
+      "city": "City",
+      "address": "Address",
+      "familySize": "Family Size",
+      "employment": "Employment",
+      "monthlyIncome": "Monthly Income",
+      "category": "Category",
+      "healthConditions": "Health Conditions"
+    },
+    "needs": {
+      "empty": "No active needs recorded",
+      "addButton": "+ Add Need",
+      "markDistributed": "Mark as Distributed",
+      "complete": "Complete",
+      "pause": "Pause",
+      "activate": "Activate",
+      "estCost": "Est. cost: ${cost}"
+    },
+    "history": {
+      "empty": "No distributions recorded yet",
+      "viewProof": "View proof →"
+    },
+    "attachments": {
+      "title": "Upload attachment",
+      "hint": "Images and PDFs only, max 10MB.",
+      "empty": "No attachments uploaded yet",
+      "fileTooLarge": "File must be 10MB or less.",
+      "invalidType": "Only images and PDFs are allowed.",
+      "view": "View",
+      "proof": "Distribution proof ({date})"
+    },
+    "notes": {
+      "empty": "No notes recorded."
+    },
+    "modal": {
+      "title": "Add Beneficiary",
+      "fullName": "Full name",
+      "city": "City",
+      "phone": "Phone",
+      "nationalId": "National ID",
+      "gender": "Gender",
+      "genderMale": "Male",
+      "genderFemale": "Female",
+      "genderOther": "Other",
+      "familySize": "Family size",
+      "monthlyIncome": "Monthly income ($)",
+      "category": "Category",
+      "categoryPlaceholder": "e.g. widows, medical",
+      "address": "Address",
+      "addressPlaceholder": "Street address",
+      "healthConditions": "Health conditions",
+      "healthPlaceholder": "Any known health conditions…",
+      "notes": "Notes",
+      "notesPlaceholder": "Any additional notes…",
+      "submit": "Save Beneficiary",
+      "submitting": "Saving…"
+    }
+  },
+  "donations": {
+    "title": "Donations",
+    "subtitle": "Track incoming donations to your organization",
+    "addButton": "+ Add Donation",
+    "summary": {
+      "totalDonations": "Total Donations",
+      "totalDistributed": "Total Distributed",
+      "balance": "Balance"
+    },
+    "table": {
+      "donor": "Donor",
+      "amount": "Amount",
+      "method": "Method",
+      "date": "Date",
+      "loading": "Loading…",
+      "empty": "No donations recorded yet",
+      "anonymous": "Anonymous"
+    },
+    "modal": {
+      "title": "Add Donation",
+      "isAnonymous": "Anonymous donor",
+      "donorName": "Donor name",
+      "donorNamePlaceholder": "Full name",
+      "amount": "Amount ($) *",
+      "amountPlaceholder": "0.00",
+      "method": "Payment method",
+      "methodSelect": "Select…",
+      "cash": "Cash",
+      "bankTransfer": "Bank Transfer",
+      "wallet": "Wallet",
+      "other": "Other",
+      "date": "Date *",
+      "notes": "Notes",
+      "submit": "Save Donation",
+      "submitting": "Saving…"
+    }
+  },
+  "needs": {
+    "modal": {
+      "title": "Add Need",
+      "type": "Need type *",
+      "frequency": "Frequency *",
+      "frequencyOneTime": "One time",
+      "frequencyWeekly": "Weekly",
+      "frequencyMonthly": "Monthly",
+      "frequencyYearly": "Yearly",
+      "urgency": "Urgency",
+      "urgencyLow": "Low",
+      "urgencyMedium": "Medium",
+      "urgencyHigh": "High",
+      "urgencyCritical": "Critical",
+      "estCost": "Estimated cost ($)",
+      "description": "Description",
+      "descriptionPlaceholder": "Describe the need…",
+      "submit": "Save Need",
+      "submitting": "Saving…"
+    }
+  },
+  "distributions": {
+    "types": {
+      "cash": "Cash",
+      "food_package": "Food Package",
+      "medicine": "Medicine",
+      "rent_payment": "Rent Payment",
+      "utilities": "Utilities",
+      "surgery_support": "Surgery Support",
+      "education_support": "Education Support",
+      "other": "Other"
+    },
+    "modal": {
+      "title": "Add Distribution",
+      "relatedNeed": "Related need",
+      "noNeed": "None",
+      "type": "Type *",
+      "date": "Date *",
+      "amount": "Amount ($)",
+      "amountPlaceholder": "0.00",
+      "notes": "Notes",
+      "notesPlaceholder": "Any notes about this distribution…",
+      "proof": "Proof attachment (image/PDF, max 10MB)",
+      "markCompleted": "Mark related need as completed",
+      "submit": "Save Distribution",
+      "submitting": "Saving…"
+    }
+  },
+  "settings": {
+    "title": "Settings",
+    "sections": {
+      "org": "Organization",
+      "members": "Members",
+      "language": "Language"
+    },
+    "org": {
+      "title": "Organization",
+      "name": "Name",
+      "slug": "Slug",
+      "role": "Your Role"
+    },
+    "members": {
+      "title": "Members",
+      "unknown": "Unknown"
+    },
+    "language": {
+      "title": "Language",
+      "label": "Interface language",
+      "en": "English",
+      "ar": "العربية"
+    }
+  },
+  "common": {
+    "loading": "Loading…",
+    "cancel": "Cancel",
+    "save": "Save",
+    "saving": "Saving…",
+    "edit": "Edit",
+    "select": "Select…",
+    "noOrg": "No organization found. Please complete onboarding first."
+  }
+}

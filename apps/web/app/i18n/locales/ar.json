@@ -1,0 +1,305 @@
+{
+  "nav": {
+    "dashboard": "لوحة التحكم",
+    "beneficiaries": "المستفيدون",
+    "donations": "التبرعات",
+    "settings": "الإعدادات",
+    "signOut": "تسجيل الخروج"
+  },
+  "app": {
+    "tagline": "إدارة المساعدات"
+  },
+  "auth": {
+    "login": {
+      "title": "مرحباً بعودتك",
+      "subtitle": "سجّل دخولك إلى حساب أمانة",
+      "email": "البريد الإلكتروني",
+      "password": "كلمة المرور",
+      "forgotPassword": "نسيت كلمة المرور؟",
+      "submit": "تسجيل الدخول",
+      "submitting": "جارٍ تسجيل الدخول…",
+      "noAccount": "ليس لديك حساب؟",
+      "signUp": "إنشاء حساب"
+    },
+    "signup": {
+      "title": "أنشئ حسابك",
+      "subtitle": "ابدأ بإدارة المساعدات مع أمانة",
+      "fullName": "الاسم الكامل",
+      "fullNamePlaceholder": "اسمك الكامل",
+      "email": "البريد الإلكتروني",
+      "password": "كلمة المرور",
+      "passwordHint": "8 أحرف على الأقل",
+      "submit": "إنشاء حساب",
+      "submitting": "جارٍ الإنشاء…",
+      "hasAccount": "هل لديك حساب بالفعل؟",
+      "signIn": "تسجيل الدخول"
+    },
+    "forgotPassword": {
+      "title": "إعادة تعيين كلمة المرور",
+      "subtitle": "سنرسل لك رابط إعادة التعيين عبر البريد الإلكتروني.",
+      "email": "البريد الإلكتروني",
+      "submit": "إرسال رابط الاستعادة",
+      "submitting": "جارٍ الإرسال...",
+      "backToLogin": "العودة إلى تسجيل الدخول",
+      "success": "تم إرسال رابط استعادة كلمة المرور. تحقق من بريدك الوارد."
+    },
+    "resetPassword": {
+      "title": "تعيين كلمة مرور جديدة",
+      "subtitle": "اختر كلمة مرور آمنة لحسابك.",
+      "newPassword": "كلمة المرور الجديدة",
+      "confirmPassword": "تأكيد كلمة المرور",
+      "submit": "تحديث كلمة المرور",
+      "submitting": "جارٍ التحديث...",
+      "mismatch": "كلمتا المرور غير متطابقتين.",
+      "success": "تم تحديث كلمة المرور. جارٍ التحويل إلى صفحة الدخول..."
+    }
+  },
+  "onboarding": {
+    "title": "أنشئ مؤسستك",
+    "subtitle": "هذا لن يستغرق سوى دقيقة",
+    "orgName": "اسم المؤسسة",
+    "orgNamePlaceholder": "مثال: جمعية الرحمة الخيرية",
+    "slug": "معرّف الرابط",
+    "slugPrefix": "amanah.app/",
+    "slugHint": "أحرف إنجليزية صغيرة وأرقام وشرطات فقط",
+    "submit": "إنشاء المؤسسة",
+    "submitting": "جارٍ الإنشاء…",
+    "slugTaken": "هذا المعرّف مستخدم بالفعل. يرجى اختيار معرّف آخر."
+  },
+  "dashboard": {
+    "title": "لوحة التحكم",
+    "subtitle": "نظرة عامة على عمليات مساعدات مؤسستك",
+    "metrics": {
+      "totalBeneficiaries": "إجمالي المستفيدين",
+      "activeCases": "الحالات النشطة",
+      "totalDonations": "إجمالي التبرعات",
+      "balanceRemaining": "الرصيد المتبقي",
+      "urgent": "{n} عاجل",
+      "thisMonth": "{n} هذا الشهر"
+    },
+    "upcomingNeeds": {
+      "title": "الاحتياجات المتكررة القادمة",
+      "viewAll": "عرض الكل ←",
+      "empty": "لا توجد احتياجات متكررة نشطة"
+    },
+    "recentDistributions": {
+      "title": "التوزيعات الأخيرة",
+      "viewAll": "عرض الكل ←",
+      "empty": "لم يتم تسجيل أي توزيعات حتى الآن"
+    }
+  },
+  "beneficiaries": {
+    "title": "المستفيدون",
+    "subtitle": "إدارة ومتابعة جميع المستفيدين",
+    "addButton": "+ إضافة مستفيد",
+    "searchPlaceholder": "ابحث بالاسم أو الهاتف أو الرقم الوطني…",
+    "statusFilter": {
+      "all": "جميع الحالات",
+      "active": "نشط",
+      "inactive": "غير نشط",
+      "archived": "مؤرشف"
+    },
+    "table": {
+      "name": "الاسم",
+      "city": "المدينة",
+      "familySize": "حجم العائلة",
+      "activeNeeds": "الاحتياجات النشطة",
+      "status": "الحالة"
+    },
+    "loading": "جارٍ التحميل…",
+    "empty": "لا يوجد مستفيدون",
+    "view": "عرض ←",
+    "familyOf": "عائلة من",
+    "notFound": "المستفيد غير موجود.",
+    "back": "← رجوع",
+    "backToBeneficiaries": "← المستفيدون",
+    "addDistribution": "+ إضافة توزيع",
+    "tabs": {
+      "info": "المعلومات الشخصية",
+      "needs": "الاحتياجات النشطة",
+      "history": "سجل التوزيعات",
+      "attachments": "المرفقات",
+      "notes": "الملاحظات"
+    },
+    "info": {
+      "fullName": "الاسم الكامل",
+      "phone": "الهاتف",
+      "nationalId": "الرقم الوطني",
+      "gender": "الجنس",
+      "birthDate": "تاريخ الميلاد",
+      "city": "المدينة",
+      "address": "العنوان",
+      "familySize": "حجم العائلة",
+      "employment": "الوضع الوظيفي",
+      "monthlyIncome": "الدخل الشهري",
+      "category": "الفئة",
+      "healthConditions": "الحالات الصحية"
+    },
+    "needs": {
+      "empty": "لا توجد احتياجات نشطة مسجلة",
+      "addButton": "+ إضافة احتياج",
+      "markDistributed": "تسجيل كتوزيع",
+      "complete": "إتمام",
+      "pause": "إيقاف مؤقت",
+      "activate": "تفعيل",
+      "estCost": "التكلفة التقديرية: ${cost}"
+    },
+    "history": {
+      "empty": "لم يتم تسجيل أي توزيعات حتى الآن",
+      "viewProof": "عرض الدليل ←"
+    },
+    "attachments": {
+      "title": "رفع مرفق",
+      "hint": "الصور وملفات PDF فقط، بحد أقصى 10 ميجابايت.",
+      "empty": "لم يتم رفع أي مرفقات حتى الآن",
+      "fileTooLarge": "يجب أن يكون حجم الملف 10 ميجابايت أو أقل.",
+      "invalidType": "يُسمح بالصور وملفات PDF فقط.",
+      "view": "عرض",
+      "proof": "دليل التوزيع ({date})"
+    },
+    "notes": {
+      "empty": "لا توجد ملاحظات مسجلة."
+    },
+    "modal": {
+      "title": "إضافة مستفيد",
+      "fullName": "الاسم الكامل",
+      "city": "المدينة",
+      "phone": "الهاتف",
+      "nationalId": "الرقم الوطني",
+      "gender": "الجنس",
+      "genderMale": "ذكر",
+      "genderFemale": "أنثى",
+      "genderOther": "أخرى",
+      "familySize": "حجم العائلة",
+      "monthlyIncome": "الدخل الشهري ($)",
+      "category": "الفئة",
+      "categoryPlaceholder": "مثال: أرامل، طبي",
+      "address": "العنوان",
+      "addressPlaceholder": "عنوان الشارع",
+      "healthConditions": "الحالات الصحية",
+      "healthPlaceholder": "أي حالات صحية معروفة…",
+      "notes": "الملاحظات",
+      "notesPlaceholder": "أي ملاحظات إضافية…",
+      "submit": "حفظ المستفيد",
+      "submitting": "جارٍ الحفظ…"
+    }
+  },
+  "donations": {
+    "title": "التبرعات",
+    "subtitle": "تتبع التبرعات الواردة إلى مؤسستك",
+    "addButton": "+ إضافة تبرع",
+    "summary": {
+      "totalDonations": "إجمالي التبرعات",
+      "totalDistributed": "إجمالي الموزّع",
+      "balance": "الرصيد"
+    },
+    "table": {
+      "donor": "المتبرع",
+      "amount": "المبلغ",
+      "method": "طريقة الدفع",
+      "date": "التاريخ",
+      "loading": "جارٍ التحميل…",
+      "empty": "لم يتم تسجيل أي تبرعات حتى الآن",
+      "anonymous": "مجهول"
+    },
+    "modal": {
+      "title": "إضافة تبرع",
+      "isAnonymous": "متبرع مجهول",
+      "donorName": "اسم المتبرع",
+      "donorNamePlaceholder": "الاسم الكامل",
+      "amount": "المبلغ ($) *",
+      "amountPlaceholder": "0.00",
+      "method": "طريقة الدفع",
+      "methodSelect": "اختر…",
+      "cash": "نقداً",
+      "bankTransfer": "تحويل بنكي",
+      "wallet": "محفظة إلكترونية",
+      "other": "أخرى",
+      "date": "التاريخ *",
+      "notes": "الملاحظات",
+      "submit": "حفظ التبرع",
+      "submitting": "جارٍ الحفظ…"
+    }
+  },
+  "needs": {
+    "modal": {
+      "title": "إضافة احتياج",
+      "type": "نوع الاحتياج *",
+      "frequency": "التكرار *",
+      "frequencyOneTime": "مرة واحدة",
+      "frequencyWeekly": "أسبوعي",
+      "frequencyMonthly": "شهري",
+      "frequencyYearly": "سنوي",
+      "urgency": "درجة الإلحاح",
+      "urgencyLow": "منخفض",
+      "urgencyMedium": "متوسط",
+      "urgencyHigh": "عالٍ",
+      "urgencyCritical": "حرج",
+      "estCost": "التكلفة التقديرية ($)",
+      "description": "الوصف",
+      "descriptionPlaceholder": "صف الاحتياج…",
+      "submit": "حفظ الاحتياج",
+      "submitting": "جارٍ الحفظ…"
+    }
+  },
+  "distributions": {
+    "types": {
+      "cash": "نقداً",
+      "food_package": "طرد غذائي",
+      "medicine": "دواء",
+      "rent_payment": "دفع إيجار",
+      "utilities": "خدمات",
+      "surgery_support": "دعم جراحي",
+      "education_support": "دعم تعليمي",
+      "other": "أخرى"
+    },
+    "modal": {
+      "title": "إضافة توزيع",
+      "relatedNeed": "الاحتياج المرتبط",
+      "noNeed": "لا يوجد",
+      "type": "النوع *",
+      "date": "التاريخ *",
+      "amount": "المبلغ ($)",
+      "amountPlaceholder": "0.00",
+      "notes": "الملاحظات",
+      "notesPlaceholder": "أي ملاحظات حول هذا التوزيع…",
+      "proof": "مرفق الدليل (صورة/PDF، بحد أقصى 10 ميجابايت)",
+      "markCompleted": "تعليم الاحتياج المرتبط كمكتمل",
+      "submit": "حفظ التوزيع",
+      "submitting": "جارٍ الحفظ…"
+    }
+  },
+  "settings": {
+    "title": "الإعدادات",
+    "sections": {
+      "org": "المؤسسة",
+      "members": "الأعضاء",
+      "language": "اللغة"
+    },
+    "org": {
+      "title": "المؤسسة",
+      "name": "الاسم",
+      "slug": "المعرّف",
+      "role": "دورك"
+    },
+    "members": {
+      "title": "الأعضاء",
+      "unknown": "غير معروف"
+    },
+    "language": {
+      "title": "اللغة",
+      "label": "لغة الواجهة",
+      "en": "English",
+      "ar": "العربية"
+    }
+  },
+  "common": {
+    "loading": "جارٍ التحميل…",
+    "cancel": "إلغاء",
+    "save": "حفظ",
+    "saving": "جارٍ الحفظ…",
+    "edit": "تعديل",
+    "select": "اختر…",
+    "noOrg": "لم يتم العثور على مؤسسة. يرجى إكمال الإعداد أولاً."
+  }
+}
