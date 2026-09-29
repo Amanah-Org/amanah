@@ -49,7 +49,7 @@ jobs:
           node-version: 20
           cache: npm
       - run: npm ci
-      - run: npx vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
+      - run: npx vercel pull --yes --debug --environment=production --token=${{ secrets.VERCEL_TOKEN }}
       - run: npx vercel build --prod --token=${{ secrets.VERCEL_TOKEN }}
       - id: deploy
         run: echo "url=$(npx vercel deploy --prebuilt --prod --token=${{ secrets.VERCEL_TOKEN }})" >> "$GITHUB_OUTPUT"
