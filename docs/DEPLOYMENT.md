@@ -20,7 +20,7 @@ Pull requests and pushes to `main` run only the check.
 1. Import the repo. Root Directory: `apps/web`, and enable "Include source files outside of the Root Directory".
 2. Set these Production environment variables: `SUPABASE_URL`, `SUPABASE_KEY` (anon key), `SUPABASE_SERVICE_ROLE_KEY`.
 3. Settings → Git: set the **Production Branch** to `dev`, and create a **Deploy Hook** named `github-dev` on branch `dev`. Copy its URL.
-4. Turn off Vercel's own auto-deploy on push (Ignored Build Step: `exit 0`) so only the hook triggers builds, after migrations.
+4. Vercel will also build `dev` on every push, which can finish before migrations do. That is fine for dev; the hook then rebuilds after migrations. Don't set an Ignored Build Step of `exit 0`, because it would skip the hook's builds too.
 
 ### GitHub
 Settings → Environments → create `dev`, then add these secrets to it:
