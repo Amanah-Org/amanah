@@ -11,6 +11,10 @@ export default defineEventHandler(async (event) => {
   if (!name?.trim() || !slug?.trim()) {
     throw createError({ statusCode: 400, statusMessage: "Name and slug are required" });
   }
+  // The slug becomes the public page URL (/public/<slug>).
+  if (!/^[a-z0-9][a-z0-9-]{1,38}[a-z0-9]$/.test(slug.trim())) {
+    throw createError({ statusCode: 400, statusMessage: "invalid_slug" });
+  }
 
   const admin = useSupabaseAdmin();
 

@@ -1,7 +1,7 @@
 <template>
-  <div class="min-h-screen flex bg-surface-50">
+  <div class="min-h-screen flex bg-canvas">
     <!-- Sidebar -->
-    <aside class="hidden md:flex flex-col w-64 bg-white border-r border-surface-200 shrink-0 shadow-[1px_0_0_0_#e2e8f0]">
+    <aside class="hidden md:flex flex-col w-64 bg-white border-e border-surface-200 shrink-0">
       <!-- Logo -->
       <div class="flex items-center gap-3 px-5 py-5 border-b border-surface-200">
         <div class="w-9 h-9 rounded-xl bg-brand-600 flex items-center justify-center shadow-sm">
@@ -10,8 +10,8 @@
           </svg>
         </div>
         <div>
-          <span class="font-bold text-slate-900 text-base leading-none">Amanah</span>
-          <p class="text-[11px] text-slate-400 mt-0.5 leading-none">{{ $t('app.tagline') }}</p>
+          <span class="font-bold text-ink-900 text-base leading-none">Amanah</span>
+          <p class="text-xs text-ink-500 mt-1 leading-none">{{ $t('app.tagline') }}</p>
         </div>
       </div>
 
@@ -21,23 +21,25 @@
           v-for="item in navItems"
           :key="item.href"
           :to="item.href"
+          :aria-current="isActive(item.href) ? 'page' : undefined"
           class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-all duration-150"
           :class="[
             isActive(item.href)
-              ? 'bg-brand-50 text-brand-700'
-              : 'text-slate-500 hover:bg-surface-100 hover:text-slate-800',
+              ? 'bg-brand-100 text-brand-800 font-semibold ring-1 ring-inset ring-brand-200'
+              : 'text-ink-500 hover:bg-brand-900/[0.06] hover:text-ink-800',
           ]"
         >
-          <span class="w-5 h-5 shrink-0 flex items-center justify-center" v-html="item.icon" />
+          <span class="w-5 h-5 shrink-0 flex items-center justify-center" :class="isActive(item.href) ? 'text-brand-600' : ''" v-html="item.icon" />
           {{ item.label }}
         </NuxtLink>
       </nav>
 
       <!-- Language switcher + sign out -->
       <div class="px-3 py-4 border-t border-surface-200 space-y-3">
+        <OrgSwitcher />
         <LanguageSwitcher />
         <button
-          class="flex items-center gap-3 w-full px-3 py-2.5 rounded-xl text-sm text-slate-500 hover:bg-surface-100 hover:text-slate-700 transition-colors"
+          class="flex items-center gap-3 w-full px-3 py-2.5 rounded-xl text-sm text-ink-500 hover:bg-brand-900/[0.06] hover:text-ink-700 transition-colors"
           @click="signOut"
         >
           <svg class="w-5 h-5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
@@ -49,9 +51,9 @@
     </aside>
 
     <!-- Mobile header -->
-    <div class="md:hidden fixed top-0 left-0 right-0 z-40 bg-white border-b border-surface-200 h-14 flex items-center px-4 gap-3 shadow-sm">
-      <button class="p-1.5 rounded-lg hover:bg-surface-100" @click="mobileOpen = !mobileOpen">
-        <svg class="w-5 h-5 text-slate-700" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+    <div class="md:hidden fixed top-0 left-0 right-0 z-40 bg-white border-b border-surface-200 h-14 flex items-center px-4 gap-3 shadow-sm" :inert="mobileOpen || undefined">
+      <button ref="menuBtn" class="p-3 -ms-3 rounded-lg text-ink-700 hover:bg-brand-900/[0.06]" :aria-label="$t('nav.menu')" :aria-expanded="mobileOpen" @click="mobileOpen = !mobileOpen">
+        <svg class="w-5 h-5 text-ink-700" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
           <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
         </svg>
       </button>
@@ -61,21 +63,21 @@
             <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
           </svg>
         </div>
-        <span class="font-bold text-slate-900">Amanah</span>
+        <span class="font-bold text-ink-900">Amanah</span>
       </div>
     </div>
 
     <!-- Mobile drawer -->
     <Transition
       enter-active-class="transition-transform duration-200"
-      enter-from-class="-translate-x-full"
+      enter-from-class="-translate-x-full rtl:translate-x-full"
       enter-to-class="translate-x-0"
       leave-active-class="transition-transform duration-200"
       leave-from-class="translate-x-0"
-      leave-to-class="-translate-x-full"
+      leave-to-class="-translate-x-full rtl:translate-x-full"
     >
-      <div v-if="mobileOpen" class="md:hidden fixed inset-0 z-50 flex">
-        <div class="w-64 bg-white h-full flex flex-col border-r border-surface-200 shadow-xl">
+      <div v-if="mobileOpen" class="md:hidden fixed inset-0 z-50 flex" role="dialog" aria-modal="true" :aria-label="$t('nav.menu')" @keydown.esc="mobileOpen = false">
+        <div class="w-64 bg-white h-full flex flex-col border-e border-surface-200 shadow-dialog">
           <div class="flex items-center justify-between px-5 py-5 border-b border-surface-200">
             <div class="flex items-center gap-2.5">
               <div class="w-8 h-8 rounded-xl bg-brand-600 flex items-center justify-center">
@@ -83,9 +85,9 @@
                   <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
                 </svg>
               </div>
-              <span class="font-bold text-slate-900">Amanah</span>
+              <span class="font-bold text-ink-900">Amanah</span>
             </div>
-            <button class="p-1.5 rounded-lg hover:bg-surface-100 text-slate-400 hover:text-slate-600" @click="mobileOpen = false">
+            <button ref="closeBtn" class="p-3 -me-3 rounded-lg text-ink-500 hover:bg-brand-900/[0.06] hover:text-ink-800" :aria-label="$t('nav.closeMenu')" @click="mobileOpen = false">
               <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
               </svg>
@@ -96,22 +98,24 @@
               v-for="item in navItems"
               :key="item.href"
               :to="item.href"
+              :aria-current="isActive(item.href) ? 'page' : undefined"
               class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-all"
               :class="[
                 isActive(item.href)
-                  ? 'bg-brand-50 text-brand-700'
-                  : 'text-slate-500 hover:bg-surface-100 hover:text-slate-800',
+                  ? 'bg-brand-100 text-brand-800 font-semibold ring-1 ring-inset ring-brand-200'
+                  : 'text-ink-500 hover:bg-brand-900/[0.06] hover:text-ink-800',
               ]"
               @click="mobileOpen = false"
             >
-              <span class="w-5 h-5 shrink-0 flex items-center justify-center" v-html="item.icon" />
+              <span class="w-5 h-5 shrink-0 flex items-center justify-center" :class="isActive(item.href) ? 'text-brand-600' : ''" v-html="item.icon" />
               {{ item.label }}
             </NuxtLink>
           </nav>
           <div class="px-3 py-4 border-t border-surface-200 space-y-3">
+            <OrgSwitcher />
             <LanguageSwitcher />
             <button
-              class="flex items-center gap-3 w-full px-3 py-2.5 rounded-xl text-sm text-slate-500 hover:bg-surface-100 hover:text-slate-700 transition-colors"
+              class="flex items-center gap-3 w-full px-3 py-2.5 rounded-xl text-sm text-ink-500 hover:bg-brand-900/[0.06] hover:text-ink-700 transition-colors"
               @click="signOut"
             >
               <svg class="w-5 h-5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
@@ -121,12 +125,21 @@
             </button>
           </div>
         </div>
-        <div class="flex-1 bg-black/30 backdrop-blur-sm" @click="mobileOpen = false" />
+        <div class="flex-1 bg-ink-950/50" @click="mobileOpen = false" />
       </div>
     </Transition>
 
     <!-- Main content -->
-    <main class="flex-1 overflow-auto md:ml-0 pt-14 md:pt-0">
+    <main class="flex-1 overflow-auto pt-14 md:pt-0" :inert="mobileOpen || undefined">
+      <ClientOnly><SyncStatus /></ClientOnly>
+      <!-- Invitations are otherwise invisible to people who already belong to an organization. -->
+      <NuxtLink
+        v-if="orgStore.pendingInvites"
+        to="/invite/accept"
+        class="block bg-warning-50 border-b border-warning-200 text-warning-900 text-sm px-4 py-2.5 text-center hover:bg-warning-100"
+      >
+        {{ $t('nav.pendingInvites', { n: orgStore.pendingInvites }, orgStore.pendingInvites) }}
+      </NuxtLink>
       <div class="page-container py-7">
         <slot />
       </div>
@@ -139,8 +152,20 @@ import { useRoute } from 'vue-router'
 
 const { t } = useI18n()
 const supabase = useSupabaseClient()
+const orgStore = useOrgStore()
 const route = useRoute()
 const mobileOpen = ref(false)
+const menuBtn = ref<HTMLButtonElement | null>(null)
+const closeBtn = ref<HTMLButtonElement | null>(null)
+
+// The open drawer is a modal dialog: focus moves into it, the page behind is inert, and focus returns to the menu button on close.
+watch(mobileOpen, async (open) => {
+  await nextTick()
+  ;(open ? closeBtn : menuBtn).value?.focus()
+})
+
+// Close the drawer on any navigation (sign-out, redirects, programmatic links), not only nav-link taps.
+watch(() => route.fullPath, () => (mobileOpen.value = false))
 
 const navItems = computed(() => [
   {
@@ -169,7 +194,11 @@ function isActive(href: string) {
   return route.path === href || route.path.startsWith(href + '/')
 }
 
+const outbox = useOutboxStore()
+
 async function signOut() {
+  // Unsynced changes stay on this device and sync the next time this user signs in.
+  if (outbox.queue.length && !confirm(t('offline.signOutWarning', { n: outbox.queue.length }, outbox.queue.length))) return
   await supabase.auth.signOut()
   await navigateTo('/login')
 }
