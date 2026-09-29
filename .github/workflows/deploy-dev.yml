@@ -1,7 +1,7 @@
 name: Deploy dev
 
 # Merging into `dev` applies database migrations to the dev Supabase project,
-# then deploys the web app to the dev Vercel project.
+# then triggers a Vercel deploy hook for the dev project.
 on:
   push:
     branches: [dev]
@@ -36,20 +36,11 @@ jobs:
   deploy:
     needs: migrate
     runs-on: ubuntu-latest
-    environment:
-      name: dev
-      url: ${{ steps.deploy.outputs.url }}
-    env:
-      VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
-      VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+    environment: dev
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          cache: npm
-      - run: npm ci
-      - run: npx vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
-      - run: npx vercel build --prod --token=${{ secrets.VERCEL_TOKEN }}
-      - id: deploy
-        run: echo "url=$(npx vercel deploy --prebuilt --prod --token=${{ secrets.VERCEL_TOKEN }})" >> "$GITHUB_OUTPUT"
+      # Vercel builds the `dev` branch from its Git integration; the hook starts
+      # that build only after migrations have been applied.
+      - name: Trigger Vercel deploy
+        run: curl --fail --silent --show-error -X POST "$VERCEL_DEPLOY_HOOK_URL"
+        env:
+          VERCEL_DEPLOY_HOOK_URL: ${{ secrets.VERCEL_DEPLOY_HOOK_URL }}
