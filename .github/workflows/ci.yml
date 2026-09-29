@@ -20,6 +20,12 @@ jobs:
           node-version: 20
           cache: npm
       - run: npm ci
+      - name: Generate Nuxt types and ESLint config
+        run: npx nuxt prepare
+        working-directory: apps/web
+        env:
+          SUPABASE_URL: https://placeholder.supabase.co
+          SUPABASE_KEY: placeholder
       - run: npm run lint
       - run: npm run build
         env:
