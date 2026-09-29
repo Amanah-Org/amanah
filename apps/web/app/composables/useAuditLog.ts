@@ -1,18 +1,15 @@
 export function useAuditLog() {
-  const supabase = useSupabaseClient();
-  const user = useSupabaseUser();
   const orgStore = useOrgStore();
+  const outbox = useOutboxStore();
 
   async function logAction(action: string, entityType: string, entityId?: string, metadata?: Record<string, unknown>) {
-    if (!orgStore.currentOrgId || !user.value) return;
-    await supabase.from("audit_logs").insert({
-      user_id: user.value.id,
-      org_id: orgStore.currentOrgId,
+    if (!orgStore.currentOrgId) return;
+    // Writes go server-side so user_id and org_id cannot be forged client-side.
+    // Queued like any other write when offline, so the trail stays complete.
+    await outbox.run(
+      { kind: "audit", body: { action, entityType, orgId: orgStore.currentOrgId, entityId, metadata } },
       action,
-      entity_type: entityType,
-      entity_id: entityId ?? null,
-      metadata: metadata ?? null,
-    });
+    );
   }
 
   return { logAction };

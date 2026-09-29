@@ -45,7 +45,7 @@ export interface OrganizationMember {
   invited_by: string | null
   created_at: string
   // Joined
-  profile?: Profile
+  profile?: Pick<Profile, 'id' | 'full_name'> | null
 }
 
 export interface Beneficiary {
@@ -80,6 +80,7 @@ export interface BeneficiaryNeed {
   estimated_cost: number | null
   frequency: NeedFrequency
   urgency: NeedUrgency
+  urgency_rank: number
   status: NeedStatus
   start_date: string | null
   end_date: string | null
@@ -123,27 +124,61 @@ export interface Donation {
   deleted_at: string | null
 }
 
-export interface AuditLog {
+export interface BeneficiaryNote {
   id: string
-  user_id: string
-  action: string
-  entity_type: string
-  entity_id: string
-  metadata: Record<string, unknown> | null
+  organization_id: string
+  beneficiary_id: string
+  body: string
+  created_by: string | null
   created_at: string
+  // Joined
+  author?: Pick<Profile, 'id' | 'full_name'> | null
 }
 
-// ─── Dashboard Metrics ────────────────────────────────────────────────────────
+/** Row of the `need_schedule` view: a need plus when it was last served and is next due. */
+export interface NeedSchedule
+  extends Pick<
+    BeneficiaryNeed,
+    | 'id'
+    | 'organization_id'
+    | 'beneficiary_id'
+    | 'type'
+    | 'frequency'
+    | 'urgency'
+    | 'urgency_rank'
+    | 'status'
+    | 'estimated_cost'
+    | 'description'
+    | 'end_date'
+  > {
+  start_date: string | null
+  last_distribution_date: string | null
+  next_due_date: string | null
+  // Joined
+  beneficiary?: Pick<Beneficiary, 'id' | 'full_name'> | null
+}
 
-export interface DashboardMetrics {
-  totalBeneficiaries: number
-  activeBeneficiaries: number
-  recurringCases: number
-  urgentCases: number
-  totalDonations: number
-  totalDistributed: number
-  remainingBalance: number
-  distributionsThisMonth: number
+/** Row returned by the `org_summary` RPC. */
+export interface OrgSummary {
+  total_beneficiaries: number
+  active_beneficiaries: number
+  active_needs: number
+  recurring_needs: number
+  urgent_needs: number
+  total_donations: number
+  total_distributed: number
+  distributions_this_month: number
+}
+
+export interface AuditLog {
+  id: string
+  user_id: string | null
+  org_id: string
+  action: string
+  entity_type: string
+  entity_id: string | null
+  metadata: Record<string, unknown> | null
+  created_at: string
 }
 
 // ─── Forms ────────────────────────────────────────────────────────────────────
@@ -162,6 +197,7 @@ export interface CreateBeneficiaryForm {
   health_conditions?: string
   category?: string
   notes?: string
+  status?: BeneficiaryStatus
 }
 
 export interface CreateNeedForm {
@@ -183,6 +219,11 @@ export interface CreateDistributionForm {
   notes?: string
   need_id?: string
   proof_attachment_url?: string
+}
+
+export interface InviteMemberForm {
+  email: string
+  role: OrgRole
 }
 
 export interface CreateDonationForm {

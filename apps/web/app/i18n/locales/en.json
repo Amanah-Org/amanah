@@ -4,7 +4,11 @@
     "beneficiaries": "Beneficiaries",
     "donations": "Donations",
     "settings": "Settings",
-    "signOut": "Sign out"
+    "signOut": "Sign out",
+    "menu": "Menu",
+    "closeMenu": "Close menu",
+    "switchOrg": "Switch organization",
+    "pendingInvites": "You have {n} pending invitation. Review it → | You have {n} pending invitations. Review them →"
   },
   "app": {
     "tagline": "Aid Management"
@@ -32,7 +36,8 @@
       "submit": "Create account",
       "submitting": "Creating account…",
       "hasAccount": "Already have an account?",
-      "signIn": "Sign in"
+      "signIn": "Sign in",
+      "checkEmail": "Account created. Check your email to confirm it, then sign in."
     },
     "forgotPassword": {
       "title": "Reset your password",
@@ -51,7 +56,23 @@
       "submit": "Update password",
       "submitting": "Updating...",
       "mismatch": "Passwords do not match.",
-      "success": "Password updated. Redirecting to sign in..."
+      "success": "Password updated. Taking you to your dashboard…",
+      "linkInvalid": "This reset link is invalid or has expired, or it was opened on a different device.",
+      "requestNew": "Request a new reset link"
+    },
+    "confirm": {
+      "waiting": "Confirming your account…"
+    },
+    "errors": {
+      "invalid_credentials": "Incorrect email or password.",
+      "email_not_confirmed": "Please confirm your email address first. Check your inbox.",
+      "user_already_exists": "An account with this email already exists. Try signing in.",
+      "email_exists": "An account with this email already exists. Try signing in.",
+      "weak_password": "This password is too weak. Use at least 8 characters.",
+      "same_password": "Choose a password different from your current one.",
+      "over_email_send_rate_limit": "Too many emails sent. Please wait a few minutes and try again.",
+      "over_request_rate_limit": "Too many attempts. Please wait a moment and try again.",
+      "session_missing": "Your session has expired. Please sign in again."
     }
   },
   "onboarding": {
@@ -60,11 +81,12 @@
     "orgName": "Organization name",
     "orgNamePlaceholder": "e.g. Al-Rahma Charity",
     "slug": "URL slug",
-    "slugPrefix": "amanah.app/",
-    "slugHint": "Lowercase letters, numbers, and hyphens only",
+    "slugPrefix": "/public/",
+    "slugHint": "Your public page address: 3–40 lowercase English letters, numbers or hyphens.",
     "submit": "Create organization",
     "submitting": "Creating…",
-    "slugTaken": "This slug is already taken. Please choose another."
+    "slugTaken": "This slug is already taken. Please choose another.",
+    "unknownError": "Something went wrong. Please try again."
   },
   "dashboard": {
     "title": "Dashboard",
@@ -75,17 +97,34 @@
       "totalDonations": "Total Donations",
       "balanceRemaining": "Balance Remaining",
       "urgent": "{n} urgent",
-      "thisMonth": "{n} this month"
+      "thisMonth": "{n} this month",
+      "recurringCases": "Recurring Cases",
+      "distributionsThisMonth": "Distributions This Month",
+      "totalDistributed": "Total Distributed",
+      "activeNeeds": "Active Needs"
     },
     "upcomingNeeds": {
-      "title": "Upcoming Recurring Needs",
+      "title": "Due & Overdue Needs",
       "viewAll": "View all →",
-      "empty": "No active recurring needs"
+      "empty": "Nothing due. All active needs are covered.",
+      "overdue": "overdue {n} day | overdue {n} days",
+      "dueToday": "due today",
+      "dueIn": "due in {n} day | due in {n} days",
+      "record": "Record",
+      "noNeeds": "No active needs yet. Add needs from a beneficiary's profile.",
+      "notGivenYet": "not given yet"
     },
     "recentDistributions": {
       "title": "Recent Distributions",
       "viewAll": "View all →",
       "empty": "No distributions recorded yet"
+    },
+    "gettingStarted": {
+      "title": "Welcome! Let's set up your organization",
+      "body": "Three quick steps to replace your spreadsheet:",
+      "addBeneficiary": "Register your first beneficiary",
+      "addNeed": "Add their recurring needs (food, rent, medicine…) from their profile",
+      "invite": "Invite your team (collectors and viewers)"
     }
   },
   "beneficiaries": {
@@ -104,19 +143,20 @@
       "city": "City",
       "familySize": "Family Size",
       "activeNeeds": "Active Needs",
-      "status": "Status"
+      "status": "Status",
+      "lastSupport": "Last Support"
     },
     "loading": "Loading…",
     "empty": "No beneficiaries found",
     "view": "View →",
-    "familyOf": "Family of",
+    "familyOf": "family of {n}",
     "notFound": "Beneficiary not found.",
-    "back": "← Back",
-    "backToBeneficiaries": "← Beneficiaries",
+    "back": "Back",
+    "backToBeneficiaries": "Beneficiaries",
     "addDistribution": "+ Add Distribution",
     "tabs": {
       "info": "Personal Info",
-      "needs": "Active Needs",
+      "needs": "Needs",
       "history": "Distribution History",
       "attachments": "Attachments",
       "notes": "Notes"
@@ -133,20 +173,24 @@
       "employment": "Employment",
       "monthlyIncome": "Monthly Income",
       "category": "Category",
-      "healthConditions": "Health Conditions"
+      "healthConditions": "Health Conditions",
+      "registered": "Registered"
     },
     "needs": {
-      "empty": "No active needs recorded",
+      "empty": "No needs recorded",
       "addButton": "+ Add Need",
       "markDistributed": "Mark as Distributed",
       "complete": "Complete",
       "pause": "Pause",
       "activate": "Activate",
-      "estCost": "Est. cost: ${cost}"
+      "estCost": "Est. cost: {cost}",
+      "lastGiven": "Last given"
     },
     "history": {
       "empty": "No distributions recorded yet",
-      "viewProof": "View proof →"
+      "viewProof": "View proof →",
+      "by": "by {name}",
+      "deleteConfirm": "Delete this distribution record? Totals and due dates will be recalculated."
     },
     "attachments": {
       "title": "Upload attachment",
@@ -155,13 +199,21 @@
       "fileTooLarge": "File must be 10MB or less.",
       "invalidType": "Only images and PDFs are allowed.",
       "view": "View",
-      "proof": "Distribution proof ({date})"
+      "proof": "Distribution proof ({date})",
+      "uploading": "Uploading…",
+      "proofType": "Distribution proof",
+      "openFailed": "Could not open file."
     },
     "notes": {
-      "empty": "No notes recorded."
+      "empty": "No notes recorded.",
+      "add": "Add note",
+      "placeholder": "Write an operational note (visit, call, follow-up)…",
+      "general": "Registration notes",
+      "deleteConfirm": "Delete this note?"
     },
     "modal": {
       "title": "Add Beneficiary",
+      "editTitle": "Edit Beneficiary",
       "fullName": "Full name",
       "city": "City",
       "phone": "Phone",
@@ -181,7 +233,44 @@
       "notes": "Notes",
       "notesPlaceholder": "Any additional notes…",
       "submit": "Save Beneficiary",
-      "submitting": "Saving…"
+      "submitting": "Saving…",
+      "birthDate": "Date of birth",
+      "employment": "Employment status",
+      "employmentPlaceholder": "e.g. unemployed, day laborer",
+      "familySizePlaceholder": "e.g. 4",
+      "requiredFields": "Full name, city and phone are required.",
+      "moreDetails": "More details (gender, income, address, health…)",
+      "fewerDetails": "Fewer details",
+      "categoryOther": "Or type another category"
+    },
+    "showing": "Showing {shown} of {total}",
+    "loadMore": "Load more",
+    "deleteConfirm": "Delete {name}? Their records will be hidden from everyone in your organization.",
+    "categories": {
+      "widows": "Widows",
+      "orphans": "Orphans",
+      "medical": "Medical",
+      "elderly": "Elderly",
+      "disabled": "Disabled",
+      "refugees": "Refugees"
+    },
+    "tabsShort": {
+      "info": "Info",
+      "needs": "Needs",
+      "history": "History",
+      "attachments": "Files",
+      "notes": "Notes"
+    },
+    "deleteButton": "Delete this beneficiary",
+    "duplicates": {
+      "title": "This person may already be registered:",
+      "hint": "Open the existing profile to avoid duplicate aid, or save anyway if this is a different person.",
+      "open": "Open",
+      "saveAnyway": "Save anyway",
+      "match": {
+        "phone": "same phone",
+        "national_id": "same national ID"
+      }
     }
   },
   "donations": {
@@ -205,7 +294,7 @@
     "modal": {
       "title": "Add Donation",
       "isAnonymous": "Anonymous donor",
-      "donorName": "Donor name",
+      "donorName": "Donor name *",
       "donorNamePlaceholder": "Full name",
       "amount": "Amount ($) *",
       "amountPlaceholder": "0.00",
@@ -218,8 +307,11 @@
       "date": "Date *",
       "notes": "Notes",
       "submit": "Save Donation",
-      "submitting": "Saving…"
-    }
+      "submitting": "Saving…",
+      "donorRequired": "Enter the donor's name or mark the donation as anonymous.",
+      "editTitle": "Edit Donation"
+    },
+    "deleteConfirm": "Delete this donation record?"
   },
   "needs": {
     "modal": {
@@ -239,7 +331,10 @@
       "description": "Description",
       "descriptionPlaceholder": "Describe the need…",
       "submit": "Save Need",
-      "submitting": "Saving…"
+      "submitting": "Saving…",
+      "editTitle": "Edit Need",
+      "startDate": "Start date",
+      "endDate": "End date"
     }
   },
   "distributions": {
@@ -266,7 +361,12 @@
       "proof": "Proof attachment (image/PDF, max 10MB)",
       "markCompleted": "Mark related need as completed",
       "submit": "Save Distribution",
-      "submitting": "Saving…"
+      "submitting": "Saving…",
+      "duplicateWarning": "Heads up: this beneficiary already received {type} on {date} ({n} day ago). | Heads up: this beneficiary already received {type} on {date} ({n} days ago).",
+      "editTitle": "Edit Distribution",
+      "proofOffline": "Proof photos need a connection. Record the distribution now and upload the photo later from the Files tab.",
+      "proofReplace": "A proof is already attached. Choosing a file replaces it.",
+      "proofUploadFailed": "The photo couldn't be uploaded. Save without it and upload it later from the Files tab."
     }
   },
   "settings": {
@@ -274,32 +374,235 @@
     "sections": {
       "org": "Organization",
       "members": "Members",
-      "language": "Language"
+      "language": "Language",
+      "activity": "Activity log"
     },
     "org": {
       "title": "Organization",
       "name": "Name",
       "slug": "Slug",
-      "role": "Your Role"
+      "role": "Your Role",
+      "publicPage": "Public transparency page",
+      "publicPageHint": "Share this link with donors. It shows aggregate figures only.",
+      "saved": "Organization updated."
     },
     "members": {
       "title": "Members",
-      "unknown": "Unknown"
+      "unknown": "Unknown",
+      "inviteTitle": "Invite a member",
+      "inviteHint": "They will get an email invitation, or see it next time they sign in if they already have an account.",
+      "invite": "Send invite",
+      "inviting": "Sending…",
+      "role": "Role",
+      "you": "you",
+      "pending": "Invited",
+      "remove": "Remove",
+      "revoke": "Revoke",
+      "removeConfirm": "Remove {name} from the organization?",
+      "invitedNew": "Invitation email sent to {email}.",
+      "invitedExisting": "{email} already has an account. They'll see the invitation when they sign in.",
+      "rolesHelp": "Admins manage everything. Collectors register beneficiaries, record distributions, donations and notes. Viewers have read-only access.",
+      "errors": {
+        "already_member": "This person is already a member.",
+        "already_invited": "This person already has a pending invitation.",
+        "Forbidden": "Only admins can invite members."
+      }
     },
     "language": {
       "title": "Language",
       "label": "Interface language",
       "en": "English",
       "ar": "العربية"
+    },
+    "activity": {
+      "title": "Activity log",
+      "empty": "No activity recorded yet.",
+      "actions": {
+        "beneficiary_created": "added a beneficiary",
+        "beneficiary_updated": "edited a beneficiary",
+        "beneficiary_deleted": "deleted a beneficiary",
+        "need_created": "added a need",
+        "need_updated": "edited a need",
+        "need_status_updated": "changed a need's status",
+        "need_completed": "completed a need",
+        "distribution_created": "recorded a distribution",
+        "donation_created": "recorded a donation",
+        "attachment_uploaded": "uploaded a file",
+        "note_added": "added a note",
+        "note_deleted": "deleted a note",
+        "member_invited": "invited a member",
+        "member_role_changed": "changed a member's role",
+        "member_removed": "removed a member",
+        "invite_revoked": "revoked an invitation",
+        "organization_updated": "updated the organization",
+        "distribution_deleted": "deleted a distribution",
+        "donation_deleted": "deleted a donation",
+        "distribution_updated": "edited a distribution",
+        "donation_updated": "edited a donation"
+      }
     }
   },
   "common": {
+    "close": "Close",
     "loading": "Loading…",
     "cancel": "Cancel",
     "save": "Save",
     "saving": "Saving…",
     "edit": "Edit",
     "select": "Select…",
-    "noOrg": "No organization found. Please complete onboarding first."
+    "noOrg": "No organization found. Please complete onboarding first.",
+    "delete": "Delete"
+  },
+  "roles": {
+    "admin": "Admin",
+    "collector": "Collector",
+    "viewer": "Viewer"
+  },
+  "enums": {
+    "status": {
+      "active": "Active",
+      "inactive": "Inactive",
+      "archived": "Archived"
+    },
+    "needType": {
+      "food": "Food",
+      "medicine": "Medicine",
+      "rent": "Rent",
+      "surgery": "Surgery",
+      "education": "Education",
+      "utilities": "Utilities",
+      "other": "Other"
+    },
+    "frequency": {
+      "one_time": "One time",
+      "weekly": "Weekly",
+      "monthly": "Monthly",
+      "yearly": "Yearly"
+    },
+    "urgency": {
+      "low": "Low",
+      "medium": "Medium",
+      "high": "High",
+      "critical": "Critical"
+    },
+    "needStatus": {
+      "active": "Active",
+      "completed": "Completed",
+      "paused": "Paused"
+    },
+    "role": {
+      "admin": "Admin",
+      "collector": "Collector",
+      "viewer": "Viewer"
+    },
+    "paymentMethod": {
+      "cash": "Cash",
+      "bank_transfer": "Bank transfer",
+      "wallet": "Wallet",
+      "other": "Other"
+    }
+  },
+  "invite": {
+    "title": "Organization invitation",
+    "subtitle": "Join your team on Amanah.",
+    "signInFirst": "Sign in with the invited email address to accept your invitation.",
+    "goToSignIn": "Go to sign in",
+    "setPasswordHint": "Welcome! Choose your name and a password to finish creating your account.",
+    "savePassword": "Save and continue",
+    "none": "No pending invitations for this account.",
+    "role": "Role",
+    "accept": "Accept invitation",
+    "accepting": "Accepting…"
+  },
+  "landing": {
+    "eyebrow": "Beneficiary & aid distribution management",
+    "heroTitle": "Know who you helped, with what, and when.",
+    "heroBody": "Amanah replaces paper records, spreadsheets and WhatsApp threads with one trusted place to register beneficiaries, track recurring needs and record every distribution.",
+    "ctaPrimary": "Create your organization",
+    "ctaSecondary": "See how it works",
+    "getStarted": "Get started",
+    "openApp": "Open dashboard",
+    "featuresTitle": "Built for the daily work of aid teams",
+    "featuresBody": "Charities, mosques and community groups use Amanah to stop duplicate aid and forgotten cases.",
+    "features": {
+      "profiles": {
+        "title": "Central beneficiary profiles",
+        "body": "Personal details, needs, full distribution history, documents and notes, all in one profile."
+      },
+      "recurring": {
+        "title": "Recurring needs that don't slip",
+        "body": "Monthly rent, weekly medicine, yearly school fees: see what is due or overdue at a glance."
+      },
+      "distributions": {
+        "title": "Every distribution recorded",
+        "body": "Cash or in-kind, with amount, date, proof photo and who delivered it."
+      },
+      "duplicates": {
+        "title": "Avoid duplicate aid",
+        "body": "Get warned when a family already received the same support recently."
+      },
+      "roles": {
+        "title": "Roles & audit trail",
+        "body": "Admins, field collectors and read-only viewers, with a log of every important action."
+      },
+      "mobile": {
+        "title": "Made for phones",
+        "body": "Field workers register cases and record deliveries on the go, in English or Arabic."
+      }
+    },
+    "transparencyTitle": "Transparency donors can trust",
+    "transparencyBody": "Share a public page with aggregate impact figures. No names, phone numbers or documents are ever exposed.",
+    "transparencyPoints": [
+      "Families supported and aid distributed",
+      "Medical and food support totals",
+      "Always anonymous, always up to date"
+    ],
+    "ctaTitle": "Start organizing your aid today",
+    "ctaBody": "Set up your organization in a minute and invite your team."
+  },
+  "public": {
+    "subtitle": "Public transparency report",
+    "notFound": "Organization not found.",
+    "families": "Families supported",
+    "distributed": "Aid distributed",
+    "medical": "Medical cases",
+    "food": "Food packages",
+    "disclaimer": "All figures are aggregate totals. No personal information is shared."
+  },
+  "toast": {
+    "beneficiaryCreated": "Beneficiary registered",
+    "beneficiaryUpdated": "Changes saved",
+    "beneficiaryDeleted": "Beneficiary deleted",
+    "needCreated": "Need added",
+    "needUpdated": "Need updated",
+    "needStatus": "Need marked {status}",
+    "distributionCreated": "Distribution recorded",
+    "distributionUpdated": "Distribution updated",
+    "distributionDeleted": "Distribution deleted",
+    "donationCreated": "Donation recorded",
+    "donationUpdated": "Donation updated",
+    "donationDeleted": "Donation deleted",
+    "noteAdded": "Note added",
+    "fileUploaded": "File uploaded",
+    "roleChanged": "Role changed to {role}",
+    "memberRemoved": "Member removed",
+    "inviteRevoked": "Invitation revoked"
+  },
+  "offline": {
+    "offline": "You're offline. Changes are saved on this device and sync automatically.",
+    "pending": "{n} change waiting | {n} changes waiting",
+    "syncing": "Syncing…",
+    "waiting": "Waiting for a connection",
+    "retry": "Retry now",
+    "synced": "{n} offline change synced | {n} offline changes synced",
+    "failed": "{n} change couldn't be saved | {n} changes couldn't be saved",
+    "review": "Review",
+    "hide": "Hide",
+    "discard": "Discard",
+    "discardConfirm": "Discard this change? It will not be saved.",
+    "savedOnDevice": "Saved on this device. It will sync when you're back online.",
+    "waitingToSync": "Waiting to sync",
+    "needsConnection": "This needs an internet connection. Try again when you're back online.",
+    "signOutWarning": "{n} change hasn't synced yet. It stays on this device and syncs the next time you sign in here. Sign out anyway? | {n} changes haven't synced yet. They stay on this device and sync the next time you sign in here. Sign out anyway?"
   }
 }

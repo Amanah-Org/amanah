@@ -24,6 +24,7 @@ export default defineNuxtConfig({
     strategy: "no_prefix",
     restructureDir: "",
     langDir: "app/i18n/locales",
+    vueI18n: "app/i18n/i18n.config.ts",
     detectBrowserLanguage: {
       useCookie: true,
       cookieKey: "amanah_locale",
@@ -47,7 +48,9 @@ export default defineNuxtConfig({
     redirectOptions: {
       login: "/login",
       callback: "/confirm",
-      exclude: ["/", "/signup", "/forgot-password", "/reset-password", "/invite/accept", "/public/*"],
+      exclude: ["/", "/signup", "/forgot-password", "/reset-password", "/confirm", "/invite/accept", "/public/*"],
+      // Remember the page a signed-out user tried to open; login sends them back there.
+      saveRedirectToCookie: true,
     },
   },
 
@@ -74,6 +77,8 @@ export default defineNuxtConfig({
       meta: [
         { charset: "utf-8" },
         { name: "viewport", content: "width=device-width, initial-scale=1" },
+        // Colors the mobile browser chrome with the primary (brand-600).
+        { name: "theme-color", content: "#075e46" },
         {
           name: "description",
           content:
@@ -81,10 +86,13 @@ export default defineNuxtConfig({
         },
       ],
       link: [
+        { rel: "icon", type: "image/svg+xml", href: "/favicon.svg" },
         { rel: "preconnect", href: "https://fonts.googleapis.com" },
+        { rel: "preconnect", href: "https://fonts.gstatic.com", crossorigin: "" },
         {
+          // Inter draws Latin and digits, Noto Sans Arabic draws Arabic (see fontFamily.sans in tailwind.config.ts).
           rel: "stylesheet",
-          href: "https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap",
+          href: "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+Arabic:wght@400;500;600;700&display=swap",
         },
       ],
     },

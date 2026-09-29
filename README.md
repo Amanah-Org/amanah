@@ -3,7 +3,7 @@
 Amanah is a web-based SaaS platform built to help charities, mosques, community groups, and aid organizations manage beneficiaries, track recurring aid needs, and record distributions transparently.
 
 ## Tech Stack
-- **Framework**: [Nuxt 3](https://nuxt.com/) (Vue.js)
+- **Framework**: [Nuxt 4](https://nuxt.com/) (Vue.js)
 - **Styling**: [Tailwind CSS](https://tailwindcss.com/)
 - **State Management**: [Pinia](https://pinia.vuejs.org/)
 - **Backend & Database**: [Supabase](https://supabase.com/) (PostgreSQL, Auth, RLS)
@@ -35,16 +35,28 @@ SUPABASE_KEY=your-anon-key-here
 ```
 
 ### 3. Database Setup (Supabase)
-You need to apply the initial schema migration to your Supabase instance.
-You can either run this in your local Supabase instance or against a remote Supabase project.
 
-If using the Supabase CLI:
+#### Option A — Local Supabase (recommended for development)
+Requires Docker. From the repo root:
+```bash
+npx supabase start      # starts Postgres, Auth, REST, Storage and Mailpit; applies all migrations + seed
+npx supabase status -o env   # shows the local API URL, anon key and service role key
+```
+Put the local values in `apps/web/.env.local` (`SUPABASE_URL`, `SUPABASE_KEY`, `SUPABASE_SERVICE_ROLE_KEY`) and run `npm run dev:local` from `apps/web`.
+
+`supabase/seed.sql` creates a demo organization (`/public/al-rahma`) with an admin, a collector and a viewer account; the credentials are documented at the top of that file. Emails (invites, password resets) are caught by Mailpit at http://127.0.0.1:54324.
+
+Reset the database (re-applies every migration and the seed) with `npx supabase db reset`. After schema changes, regenerate the client types:
+```bash
+npx supabase gen types typescript --local --schema public > apps/web/app/types/database.types.ts
+```
+
+#### Option B — Hosted Supabase project
 ```bash
 supabase link --project-ref your-project-ref
 supabase db push
 ```
-
-Alternatively, copy the contents of `supabase/migrations/001_initial_schema.sql` and run it in the SQL Editor of your Supabase dashboard.
+In the Supabase dashboard, set the Auth Site URL to your app URL and add `<app-url>/confirm`, `<app-url>/invite/accept` and `<app-url>/reset-password` to the redirect URLs.
 
 ## Running the Application
 
@@ -68,6 +80,6 @@ npm run build
 You can then start the production server (depending on your hosting environment, Nuxt creates an `.output` directory).
 
 ## Project Structure
-- `apps/web`: The main Nuxt 3 web application.
+- `apps/web`: The main Nuxt 4 web application.
 - `packages/types`: Shared TypeScript definitions used across the monorepo.
 - `supabase/migrations`: SQL migration files defining the database schema and Row Level Security (RLS) policies.

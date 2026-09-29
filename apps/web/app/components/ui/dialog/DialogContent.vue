@@ -23,7 +23,7 @@ const forwarded = useForwardPropsEmits(delegatedProps, emits)
 <template>
   <DialogPortal>
     <DialogOverlay
-      class="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0"
+      class="fixed inset-0 z-50 bg-ink-950/50 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0"
     />
     <DialogContent
       v-bind="forwarded"
@@ -36,10 +36,10 @@ const forwarded = useForwardPropsEmits(delegatedProps, emits)
       <slot />
 
       <DialogClose
-        class="absolute right-4 top-4 rounded-xl p-1.5 text-slate-400 hover:text-slate-600 hover:bg-surface-100 transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none"
+        class="absolute end-2 top-2 rounded-xl p-3.5 text-ink-500 hover:text-ink-800 hover:bg-brand-900/[0.07] transition-colors disabled:pointer-events-none"
       >
         <X class="w-4 h-4" />
-        <span class="sr-only">Close</span>
+        <span class="sr-only">{{ $t('common.close') }}</span>
       </DialogClose>
     </DialogContent>
   </DialogPortal>
